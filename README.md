@@ -1,9 +1,9 @@
 # NINF - Nutritional Information Framework
 
-This document describes a framework for comunication of nutritional information through a machine readable, human deductable expansional string.
+This document describes a framework for communication of nutritional information through a machine-readable, human deductible expansional string.
 
 # Examples
-The string `ninf://K:185/D:50/P:8.6/F:6.8/Fs:3/C:22.4/Cs:6.6/AA` will result in the following image
+The string `ninf://K:185/D:50/P:8.6/F:6.8/Fs:3/C:22.4/Cs:6.6/AA` will result in the following image:
 
 ![ninf://K:185/D:50/P:8.6/F:6.8/Fs:3/C:22.4/Cs:6.6/AA](test.png "ninf://K:185/D:50/P:8.6/F:6.8/Fs:3/C:22.4/Cs:6.6/AA")
 
@@ -11,16 +11,18 @@ The string `ninf://K:185/D:50/P:8.6/F:6.8/Fs:3/C:22.4/Cs:6.6/AA` will result in 
 Nutritional tracking has many uses, food labeling laws have been brought up in many countries to help the public understand better what is in the foods they buy. In some scenarios this information can be further extended if consumed by a computer, app or terminal.
 1. Nutritional tracking for diet
 2. Nutritional tracking for health(diabetes, anemia)
-3. Accecebility(low vision)
-4. Alergens
+3. Accessibility(low vision)
+4. Allergens
 
 
 ## Structure
-ninf:// is the protocol that starts the string, every parameter is then folowed in any order(but the most important should come first) in a `key:value` pair
+ninf:// is the protocol that starts the string, every parameter is then followed in any order(but the most important should come first) in a `key:value` pair.
 
-The valid keys can be consulted on the provisional key list but any non conflicting adititions can be made. 
-The keys should be as minimal as possible, with one letter being the prefered for base metrics. 
-Category metric keys are supported and should consist of a Capital letter for the Category and a lowercase letter for the metric. `Ae` is from the `Alergens` category, metric `peanuts`. Another example is `Fs`, `Fm` or `Fp` which are all Fats(saturate, mono-unsaturate, poly-unsaturate)
+The valid keys can be consulted on the provisional key list but any non conflicting addititions can be made. 
+The keys should be as minimal as possible, with one letter being the preferred for base metrics. 
+
+Category metric keys are supported and should consist of a Capital letter for the Category and a lowercase letter for the metric. `Ae` is from the `Allergens` category, metric `peanuts`. Another example is `Fs`, `Fm` or `Fp` which are all Fats(saturate, mono-unsaturate, poly-unsaturate).
+
 The unit for each key is stated on the reference table and can be change with a unit modification key(`U`)
 
 ## Referance Table
@@ -76,7 +78,7 @@ reference values [taken](https://europa.eu/youreurope/business/product-requireme
 |Se|Selenium|μg|
 |Mo|Molybdenum|μg|
 |I|Iodine|μg|
-|**A**|**Alergens**||
+|**A**|**Allergens**||
 |AA|All alergens||
 |Aa|Cerials Containing gluten||
 |Ab|Crustaceans||
@@ -117,11 +119,11 @@ reference values [taken](https://europa.eu/youreurope/business/product-requireme
 
 
 ## Custom Usage and Extensions
-The goal of this system is serve as a solid framework but also to be expandable for particular use cases. Schema defenition of new keys is suported, as well as redifining the units of the already established keys(hello 🇺🇸).
-### Changing unints
-The special key prefix `U` is used to redefine Units of other keys, for example to change `K` from `Kcal` to `Kjoule`, you can append `UK:Kj` to the vector
+The goal of this system is serve as a solid framework but also to be expandable for particular use cases. Schema definition of new keys is supported, as well as redefining the units of the already established keys(hello 🇺🇸).
+### Changing units
+The special key prefix `U` is used to redefine Units of other keys, for example to change `K` from `Kcal` to `Kjoule`, you can append `UK:Kj` to the vector.
 ### Metric Key declaration
-To declare new metrics the special key prefix `X` can be used. For example to add `Added sugar` as a metrig, one can define it by appending `XCag:Added sugar` to the vector. By default all added metrics are assumed to be in grams, but you can define it's unit with the `U` key as above. This can also be used to redefine any key.
+To declare new metrics the special key prefix `X` can be used. For example to add `Added sugar` as a metric, one can define it by appending `XCag:Added sugar` to the vector. All added metrics are assumed to be in grams, but you can define it's unit with the `U` key as above. This can also be used to redefine any key.
 
 # Contributing
 This is a work in progress and open for contributions, all done in github open for discussion. If reworks come in the future that would change the protocol significantly a new major version will be added to the string, or something like that, maybe let's define a `Vx` key for it. I'm sure there are some typos and duplications somewhere.
